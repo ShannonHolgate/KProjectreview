@@ -1,11 +1,10 @@
-require './KReview2/version.rb'
-require './employee.rb'
-require './review.rb'
-require './project.rb'
-require './reviewrating.rb'
-require './rating.rb'
-require './pmcomment.rb'
-require './emcomment.rb'
+require './lib/employee'
+require './lib/review'
+require './lib/project'
+require './lib/reviewrating'
+require './lib/rating'
+require './lib/pmcomment'
+require './lib/emcomment'
 require 'rubygems'
 require 'sinatra'
 require 'mongoid'
@@ -14,7 +13,7 @@ require 'sinatra/base'
 
 module KReview2
 
-	Mongoid.load!("./mongoid.yml")
+	Mongoid.load!("./lib/mongoid.yml")
 	enable :sessions
 
 	helpers do
