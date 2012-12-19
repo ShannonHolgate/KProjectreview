@@ -1,0 +1,1 @@
+web: bundle exec ruby KReview2.rb -p $PORT
