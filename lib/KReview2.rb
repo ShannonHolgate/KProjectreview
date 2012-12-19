@@ -9,7 +9,7 @@ require './emcomment.rb'
 require 'rubygems'
 require 'sinatra'
 require 'mongoid'
-require 'Haml'
+require 'haml'
 require 'sinatra/base'
 
 module KReview2
