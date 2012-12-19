@@ -1,3 +1,4 @@
+require './KReview2/version.rb'
 require './employee.rb'
 require './review.rb'
 require './project.rb'
