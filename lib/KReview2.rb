@@ -1,5 +1,5 @@
 require './lib/KReview2/version'
-require './lib/employee.rb'
+require './lib/employee'
 require './lib/review'
 require './lib/project'
 require './lib/reviewrating'
