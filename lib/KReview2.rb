@@ -1,4 +1,5 @@
-require './lib/employee'
+require './lib/KReview2/version'
+require './lib/employee.rb'
 require './lib/review'
 require './lib/project'
 require './lib/reviewrating'
@@ -19,7 +20,14 @@ module KReview2
 	helpers do
 	  def validate(username, password)
 	  	puts "in validate"
+	  	project = Project.where(:pr_id => 1)
+	  	puts "got one"
+	  	project.each do |p|
+				puts "after project " + p.name.to_s
+			end
+			puts "got none"
 	    $employee = Employee.where(:username => username, :password => password ).first
+	    puts "still in validate"
 	    return $employee.nil?
 	  end
 	  
@@ -234,7 +242,7 @@ module KReview2
     @name = "#{@params[:name]}"
     @pass = "#{@params[:pass]}"
 
-    puts @name + " " @pass
+    puts @name + " " + @pass
 
     if(!validate(@name, @pass))
 			session["logged_in"] = true

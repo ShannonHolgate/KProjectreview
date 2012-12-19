@@ -7,10 +7,9 @@ development:
 test:
   sessions:
     default:
-      database: test
+      database: mongoid
       hosts:
         - localhost:27017
-
 production:
   sessions:
     default:
