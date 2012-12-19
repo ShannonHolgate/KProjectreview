@@ -1,1 +1,1 @@
-web: bundle exec ruby ./lib/bKReview2.rb -p $PORT
+web: bundle exec ruby ./lib/KReview2.rb -p $PORT
