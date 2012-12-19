@@ -1,4 +1,4 @@
-source 'https://rubygems.org'
+source :rubygems
 
 gem 'sinatra'
 gem 'mongoid'
@@ -7,4 +7,4 @@ gem 'sinatra_more'
 gem 'haml'
 
 # Specify your gem's dependencies in KReview2.gemspec
-gemspec
+

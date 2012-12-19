@@ -1,10 +1,5 @@
-PATH
-  remote: .
-  specs:
-    KReview2 (0.0.1)
-
 GEM
-  remote: https://rubygems.org/
+  remote: http://rubygems.org/
   specs:
     activemodel (3.2.9)
       activesupport (= 3.2.9)
@@ -47,7 +42,6 @@ PLATFORMS
   x86-mingw32
 
 DEPENDENCIES
-  KReview2!
   bson_ext
   haml
   mongoid
