@@ -1,0 +1,11 @@
+%form{ :action => "/login", :method => "post", :id => "login"}
+	%h1 Log in to <strong>KProjectReview</strong>
+	%div
+		%label{:for => "name"} Username
+		%input{:type => "text", :name => "name", :id => "login_username", :class => "field required", :title => "Please provide your username"}
+	%div
+		%label{:for => "pass"} Password
+		%input{:type => "password", :name => "pass", :class => "text", :id => "login_password", :class => "field required", :title => "Password is required"}
+	%div{:class => "submit"}
+		%button{:type => "submit"} Login
+

@@ -1,0 +1,40 @@
+%div{:id => "floatMenu"}
+	%h3 Welcome
+	%h1=@name
+%form{ :action => "", :method => "post"}
+	%div{:id => "save"}
+		%button{:type => "submit"} Save
+	%div{:id => "back", :class => "back"}
+		%button{:type => "button"} Back
+	%div{:class => "initial-margin"}
+	%div{:id => "new-review"}
+		%h1 New Review
+		%table{:id => "review-info-table"}
+			%tr
+				%th Employee
+				%td
+					%select{:name => "em_name", :class => "select-emp"}
+						-@employees.each do |emp|
+							%option
+								%a{:name => "forename"}=emp.f_name 
+								=" " 
+								%a{:name => "surname"}=emp.s_name
+					%button{:type => "button", :class => "new-emp"} New
+				%th Role
+				%td
+					%select{:name => "em_role", :class => "select"}
+						-@roles.each do |role|
+							%option=role
+					%button{:type => "button", :class => "new-role"} New
+			%tr
+				%th Project
+				%td
+					%select{:name => "proj", :class => "select-proj"}
+						-@projects.each do |proj|
+							%option=proj.name
+					%button{:type => "button", :class => "new-proj"} New
+				%th Period
+				%td
+					%input{:type => "date", :name => "period_from"}
+					=" - "
+					%input{:type => "date", :name => "period_to"}

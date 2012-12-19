@@ -1,0 +1,100 @@
+!!!  
+%html  
+	%head  
+		%script{:type => "text/javascript", :src => %"http://code.jquery.com/jquery-1.5.min.js"}
+		:javascript
+			$(document).ready(function(){
+				$('.back').click(function() {
+					window.location = "/Review/";
+				});
+
+				$('.logout').click(function() {
+					window.location = "/";
+				});
+
+				$('.new-role').click(function() {
+					var numItems = $('.temp-row').length;
+					if (numItems < 1) {
+						$('#review-info-table').append('<tr class="temp-row"><td class="transparent-td"></td><td class="transparent-td"></td><th>New Role</th><td><input type="text" name="new-role" class="role-name"><button type="button" class="remove-button">Remove</button></td></tr>');
+						$('.new-role').hide();
+						$('.select').attr('disabled', 'disabled');
+					}
+				});
+
+				$('.remove-button').live('click', function() {
+					$('.temp-row').remove();
+					$('.select').removeAttr('disabled');
+					$('.new-role').show();
+				});
+
+				$('.new-proj').click(function() {
+					var numItems = $('.temp-row-proj').length;
+					if (numItems < 1) {
+						$('#review-info-table').append('<tr class="temp-row-proj"><td class="transparent-td"></td><td class="transparent-td"></td><th>New Project</th><td><input type="text" name="new-proj" class="proj-name" placeholder="Project Name"><button type="button" class="remove-button-proj">Remove</button></td></tr>');
+						$('.new-proj').hide();
+						$('.select-proj').attr('disabled', 'disabled');
+					}
+				});
+
+				$('.remove-button-proj').live('click', function() {
+					$('.temp-row-proj').remove();
+					$('.select-proj').removeAttr('disabled');
+					$('.new-proj').show();
+				});
+
+				$('.new-emp').click(function() {
+					var numItems = $('.temp-row-emp').length;
+					if (numItems < 1) {
+						$('#review-info-table').append('<tr class="temp-row-emp"><td class="transparent-td"></td><td class="transparent-td"></td><th>New Employee</th><td><input type="text" name="new-fname" class="f-name" placeholder="Forename"> - <input type="text" name="new-sname" class="s-name" placeholder="Surname"><button type="button" class="remove-button-emp">Remove</button></td></tr>');
+						$('.new-emp').hide();
+						$('.select-emp').attr('disabled', 'disabled');
+					}
+				});
+
+				$('.remove-button-emp').live('click', function() {
+					$('.temp-row-emp').remove();
+					$('.select-emp').removeAttr('disabled');
+					$('.new-emp').show();
+				});
+
+				$('.new-review').click(function() {
+					window.location = "/Review/New";
+				});
+
+				$('.delete-review').click( function() {
+					var revId = $(this).attr('name');
+					if(confirm("Do you want to delete?")) {
+						window.location = "/Review/Delete/" + revId;
+					}
+				});
+			});  
+
+			jQuery(function($){
+				$('#login').submit(function(){
+				var valid = true;
+				var errormsg = 'This field is required!';
+				var errorcn = 'error';
+				
+				$('.' + errorcn, this).remove();			
+				
+				$('.required', this).each(function(){
+					var parent = $(this).parent();
+					if( $(this).val() == '' ){
+						var msg = $(this).attr('title');
+						msg = (msg != '') ? msg : errormsg;
+						$('<span class="'+ errorcn +'">'+ msg +'</span>')
+							.appendTo(parent)
+							.fadeIn('fast')
+							.click(function(){ $(this).remove(); })
+						valid = false;
+					};
+				});
+				
+				return valid;
+				});
+			})
+		%title KProjectReviews  
+		-#%link(rel="stylesheet" href="http://yui.yahooapis.com/2.8.0r4/build/reset/reset-min.css")  
+		%link{:rel => "stylesheet", :href => "/css/styles.css"}  
+	%body{:class => "body-no-margins"} 
+		=yield

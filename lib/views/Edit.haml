@@ -1,0 +1,63 @@
+%div{:id => "floatMenu"}
+	%h3 Welcome
+	%h1=@name
+%form{ :action => "", :method => "post"}
+	%div{:id => "save"}
+		%button{:type => "submit"} Save
+	%div{:id => "back", :class => "back"}
+		%button{:type => "button"} Back
+	%div{:class => "initial-margin"}
+	%div{:id => "review-information"}
+		%h1= @employee.f_name + " " + @employee.s_name
+		%table{:id => "review-info-table"}
+			%tr
+				%th Project
+				%td= @project.name
+				%th Role
+				%td
+					%select{:name => "em_role", :class => "select"}
+						-@roles.each do |role|
+							%option{ :selected => role == @employee.role}=role
+					%button{:type => "button", :class => "new-role"} New
+			%tr
+				%th Period
+				%td= @review.rev_start.to_s + " to " + @review.rev_end.to_s
+				%th Career Manager
+				%td= @career_manager.f_name + " " + @career_manager.s_name
+
+	%div{:id => "review"}
+		%fieldset
+			%table
+				%tr{:class => "table-header"}
+					%th Factor
+					%th Employee Comment
+					%th Manager Comment
+					%th Rating
+				- @pm_comments.sort {|a,b| a.pmc_id <=> b.pmc_id}.each do |pmc|
+					%tr
+						%td
+							%h4=@sections.where(:ra_id => pmc.ra_id).first.name
+							%p=@sections.where(:ra_id => pmc.ra_id).first.desc.to_s
+						%td
+							%textarea{:type => "text", :name => "em_desc." + pmc.ra_id.to_s, :id => "styled"}
+								=@em_comments.where(:ra_id => pmc.ra_id).first.desc.to_s
+						%td
+							%textarea{:type => "text", :name => "desc." + pmc.ra_id.to_s, :id => "styled"} 
+								=pmc.desc
+						%td{:class => "rating", :id => "styled"}
+							%ul
+								%li
+									%label{:for => "star5." + pmc.ra_id.to_s} 1
+									%input{:type => "radio", :name => "rating." + pmc.ra_id.to_s, :checked => @review_rating.where(:ra_id => pmc.ra_id).first.rating == 1 ? true : nil, :value => "1"}
+								%li
+									%label{:for => "star4." + pmc.ra_id.to_s} 2
+									%input{:type => "radio", :name => "rating." + pmc.ra_id.to_s, :checked => @review_rating.where(:ra_id => pmc.ra_id).first.rating == 2 ? true : nil, :value => "2"}
+								%li
+									%label{:for => "star3." + pmc.ra_id.to_s} 3
+									%input{:type => "radio", :name => "rating." + pmc.ra_id.to_s, :checked => @review_rating.where(:ra_id => pmc.ra_id).first.rating == 3 ? true : nil, :value => "3"}
+								%li
+									%label{:for => "star2." + pmc.ra_id.to_s} 4
+									%input{:type => "radio", :name => "rating." + pmc.ra_id.to_s, :checked => @review_rating.where(:ra_id => pmc.ra_id).first.rating == 4 ? true : nil, :value => "4"}
+								%li
+									%label{:for => "star1." + pmc.ra_id.to_s} 5
+									%input{:type => "radio", :name => "rating." + pmc.ra_id.to_s, :checked => @review_rating.where(:ra_id => pmc.ra_id).first.rating == 5 ? true : nil, :value => "5"}

@@ -1,0 +1,22 @@
+%div{:id => "floatMenu"}
+	%h3 Welcome
+	%h1=@name
+	%button{:class => "new-review"} New Review
+	%div{:id => "logout", :class => "logout"}
+		%button Logout
+%div{:class => "initial-margin"}
+- @employees.each do |employees|
+	%h3{:class => "review-h3"}= employees.f_name + " " + employees.s_name + "\t - " + employees.role
+	%div{:id => "review-list"}
+		%table
+			%tr{:class => "table-header"}
+				%th Review
+				%th Period
+				- @reviews.where(:emp_id => employees.emp_id).each do |reviews|
+					%tr
+						%td{:onclick=>"location.href = '/Review/#{employees.emp_id}/#{reviews.re_id}'"}= @projects.where(:pr_id => reviews.pr_id).first.name.to_s + " review"
+						%td{:onclick=>"location.href = '/Review/#{employees.emp_id}/#{reviews.re_id}'"}= reviews.rev_start.to_s + " to " + reviews.rev_end.to_s
+						%td{:class => "transparent-td"}
+							%button{:type => "button", :name => "#{reviews.re_id}", :class => "delete-review"} Delete
+
+%br/

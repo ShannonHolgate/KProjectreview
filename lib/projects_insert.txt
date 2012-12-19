@@ -1,0 +1,1 @@
+db.projects.insert([{pr_id:1,name:"EircomeCOM"},{pr_id:2,name:"AONGRIPT"},{pr_id:3,name:"Evolve"}])
