@@ -12,4 +12,4 @@ test:
         - localhost:27017
 
 production:
-  uri: <%= ENV['MONGOLAB_URI'] %>
+  uri: <%= ENV['MONGOHQ_URL'] %>
