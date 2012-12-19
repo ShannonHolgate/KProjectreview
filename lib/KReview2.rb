@@ -18,7 +18,8 @@ module KReview2
 
 	helpers do
 	  def validate(username, password)
-	    $employee = Employee.where(:username => username.downcase, :password => password ).first
+	  	puts "in validate"
+	    $employee = Employee.where(:username => username, :password => password ).first
 	    return $employee.nil?
 	  end
 	  
@@ -232,6 +233,8 @@ module KReview2
 	post '/login' do
     @name = "#{@params[:name]}"
     @pass = "#{@params[:pass]}"
+
+    puts @name + " " @pass
 
     if(!validate(@name, @pass))
 			session["logged_in"] = true
