@@ -21,6 +21,9 @@ module KReview2
 	helpers do
 	  def validate(username, password)
 
+	  	project = Project.new(:pr_id => 0, :name => yeah)
+			project.save
+
 	  	logger.level = Logger::DEBUG
     	logger.debug "VALIDATE Form data: #{@name} #{@pass}."
     	logger.info "VALIDATE: Before DB search"
