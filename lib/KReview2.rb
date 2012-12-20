@@ -20,15 +20,29 @@ module KReview2
 
 	helpers do
 	  def validate(username, password)
-	  	puts "in validate"
-	  	project = Project.where(:pr_id => 1)
-	  	puts "got one"
+
+	  	logger.level = Logger::DEBUG
+    	logger.debug "VALIDATE Form data: #{@name} #{@pass}."
+    	logger.info "VALIDATE: Before DB search"
+
+	  	project = Project.all()
+
+	  	logger.debug "VALIDATE Tried to get a project."
+    	logger.info "VALIDATE: Mongo Document query"
+
 	  	project.each do |p|
-				puts "after project " + p.name.to_s
+
+				logger.debug "VALIDATE Tried iterating through results set. #{p.name.to_s}"
+    		logger.info "VALIDATE: Document loop"
+
 			end
-			puts "got none"
+
+			logger.debug "VALIDATE After loop"
+
 	    $employee = Employee.where(:username => username, :password => password ).first
-	    puts "still in validate"
+
+	    logger.debug "VALIDATE Tried to get employee"
+
 	    return $employee.nil?
 	  end
 	  
@@ -244,7 +258,7 @@ module KReview2
     @pass = "#{@params[:pass]}"
 
     logger.level = Logger::DEBUG
-    logger.debug "#{@name} #{@pass}."
+    logger.debug "POST Form data: #{@name} #{@pass}."
     logger.info "login."
 
     if(!validate(@name, @pass))
