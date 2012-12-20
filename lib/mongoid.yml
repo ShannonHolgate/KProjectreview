@@ -1,21 +1,21 @@
 development:
   sessions:
     default:
-      uri: <%= ENV['MONGOHQ_URL'] %>
+      uri: <%= ENV['MONGOLAB_URI'] %>
       options:
         skip_version_check: true
         safe: true
 test:
   sessions:
     default:
-      uri: <%= ENV['MONGOHQ_URL'] %>
+      uri: <%= ENV['MONGOLAB_URI'] %>
       options:
         skip_version_check: true
         safe: true
 production:
   sessions:
     default:
-      uri: <%= ENV['MONGOHQ_URL'] %>
+      uri: <%= ENV['MONGOLAB_URI'] %>
       options:
         skip_version_check: true
         safe: true
