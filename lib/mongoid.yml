@@ -1,15 +1,17 @@
 development:
   sessions:
     default:
-      database: mongoid
-      hosts:
-        - localhost:27017
+      uri: <%= ENV['MONGOHQ_URL'] %>
+      options:
+        skip_version_check: true
+        safe: true
 test:
   sessions:
     default:
-      database: mongoid
-      hosts:
-        - localhost:27017
+      uri: <%= ENV['MONGOHQ_URL'] %>
+      options:
+        skip_version_check: true
+        safe: true
 production:
   sessions:
     default:
