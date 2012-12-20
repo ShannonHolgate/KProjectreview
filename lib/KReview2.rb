@@ -16,6 +16,7 @@ require 'logger'
 module KReview2
 
 	Mongoid.load!("./lib/mongoid.yml")
+	
 	enable :sessions
 
 	helpers do
