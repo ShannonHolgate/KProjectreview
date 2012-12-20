@@ -11,6 +11,7 @@ require 'sinatra'
 require 'mongoid'
 require 'haml'
 require 'sinatra/base'
+require 'logger'
 
 module KReview2
 
@@ -242,7 +243,9 @@ module KReview2
     @name = "#{@params[:name]}"
     @pass = "#{@params[:pass]}"
 
-    puts @name + " " + @pass
+    logger.level = Logger::DEBUG
+    logger.debug "#{@name} #{@pass}."
+    logger.info "login."
 
     if(!validate(@name, @pass))
 			session["logged_in"] = true
