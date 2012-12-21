@@ -8,13 +8,20 @@ development:
       password: <%= uri.password %>
       hosts:
         - <%= uri.host %>:<%= uri.port %>
-<% end %>
-
 test:
   sessions:
     default:
-      uri: <%= ENV['MONGOLAB_URI'] %>
+      database: <%= uri.path.sub('/','') %>
+      username: <%= uri.user %>
+      password: <%= uri.password %>
+      hosts:
+        - <%= uri.host %>:<%= uri.port %>
 production:
   sessions:
     default:
-      uri: <%= ENV['MONGOLAB_URI'] %>
+      database: <%= uri.path.sub('/','') %>
+      username: <%= uri.user %>
+      password: <%= uri.password %>
+      hosts:
+        - <%= uri.host %>:<%= uri.port %>
+<% end %>
