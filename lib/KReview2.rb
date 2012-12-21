@@ -91,7 +91,7 @@ post '/Review/New' do
 
 	maxEmId = Employee.max(:emp_id).to_i + 1
 	maxPrId = Project.max(:pr_id)
-	maxReId = Review.max(:re_id)
+	maxReId = Review.max(:re_id) || 0
 
 	if params["new-fname"].to_s.strip.length != 0
 		if params["new-role"].to_s.strip.length != 0
