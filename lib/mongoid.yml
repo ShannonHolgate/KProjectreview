@@ -8,6 +8,9 @@ development:
       password: <%= uri.password %>
       hosts:
         - <%= uri.host %>:<%= uri.port %>
+      options:
+        skip_version_check: true
+        safe: true
 test:
   sessions:
     default:
@@ -16,6 +19,9 @@ test:
       password: <%= uri.password %>
       hosts:
         - <%= uri.host %>:<%= uri.port %>
+      options:
+        skip_version_check: true
+        safe: true
 production:
   sessions:
     default:
@@ -24,4 +30,7 @@ production:
       password: <%= uri.password %>
       hosts:
         - <%= uri.host %>:<%= uri.port %>
+      options:
+        skip_version_check: true
+        safe: true
 <% end %>
