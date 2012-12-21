@@ -20,7 +20,7 @@ end
 helpers do
   def validate(username, password)
 
-  	project = Project.new(:pr_id => 1, :name => 3)
+  	project = Project.new(:pr_id => 1, :name => "yeah")
 		project.save
 
   	logger.level = Logger::DEBUG
