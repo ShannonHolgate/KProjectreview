@@ -89,8 +89,8 @@ end
 
 post '/Review/New' do
 
-	maxEmId = Employee.max(:emp_id).to_i + 1
-	maxPrId = Project.max(:pr_id)
+	maxEmId = Employee.max(:emp_id).to_i + 1 || 1
+	maxPrId = Project.max(:pr_id) || 0
 	maxReId = Review.max(:re_id) || 0
 
 	if params["new-fname"].to_s.strip.length != 0
@@ -148,9 +148,9 @@ get '/Review/:emp_id/:re_id' do |emp_id, re_id|
 		@roles.push(emp)
 	end
 
-	maxEmCom = Emcomment.max(:emc_id)
-	maxPmCom = Pmcomment.max(:pmc_id)
-	maxRevRating = Reviewrating.max(:rev_id)
+	maxEmCom = Emcomment.max(:emc_id) || 0
+	maxPmCom = Pmcomment.max(:pmc_id) || 0
+	maxRevRating = Reviewrating.max(:rev_id) || 0
 
 	if Emcomment.where(:re_id => @review.re_id).exists?
 		@em_comments = Emcomment.where(:re_id => @review.re_id)
