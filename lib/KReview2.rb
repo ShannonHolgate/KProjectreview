@@ -10,7 +10,7 @@ Dir[File.dirname(__FILE__) + '/models/*.rb'].each { |file| require file }
 use Rack::Deflater
 
 configure do
-	logger.info "Mongo URI: \n" + ENV['MONGOLAB_URI'] + "\n\n"
+	puts "Mongo URI: \n#{ENV['MONGOLAB_URI']}\n\n"
 	Mongoid.load!("#{File.dirname(__FILE__)}/mongoid.yml")
   set :root, File.dirname(__FILE__)
   set :haml, :format => :html5
