@@ -1,36 +1,4 @@
 <% if ENV['MONGOLAB_URI'] %>
   <% uri = URI.parse(ENV['MONGOLAB_URI']) %>
-development:
-  sessions:
-    default:
-      database: <%= uri.path.sub('/','') %>
-      username: <%= uri.user %>
-      password: <%= uri.password %>
-      hosts:
-        - <%= uri.host %>:<%= uri.port %>
-      options:
-        skip_version_check: true
-        safe: true
-test:
-  sessions:
-    default:
-      database: <%= uri.path.sub('/','') %>
-      username: <%= uri.user %>
-      password: <%= uri.password %>
-      hosts:
-        - <%= uri.host %>:<%= uri.port %>
-      options:
-        skip_version_check: true
-        safe: true
-production:
-  sessions:
-    default:
-      database: <%= uri.path.sub('/','') %>
-      username: <%= uri.user %>
-      password: <%= uri.password %>
-      hosts:
-        - <%= uri.host %>:<%= uri.port %>
-      options:
-        skip_version_check: true
-        safe: true
+
 <% end %>
