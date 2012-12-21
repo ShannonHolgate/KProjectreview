@@ -1,21 +1,21 @@
 development:
   sessions:
     default:
-      uri: <%= (ENV['MONGOLAB_URI'] || "localhost:27017/mongoid") %>
+      uri: <%= (ENV['MONGOHQ_URL'] || "localhost:27017/mongoid") %>
       options:
         skip_version_check: true
         safe: true
 test:
   sessions:
     default:
-      uri: <%= ENV['MONGOLAB_URI'] %>
+      uri: <%= ENV['MONGOHQ_URL'] %>
       options:
         skip_version_check: true
         safe: true
 production:
   sessions:
     default:
-      uri: <%= (ENV['MONGOLAB_URI'] || "localhost:27017/mongoid") %>
+      uri: <%= (ENV['MONGOHQ_URL'] || "localhost:27017/mongoid") %>
       options:
         skip_version_check: true
         safe: true

@@ -20,30 +20,7 @@ end
 helpers do
   def validate(username, password)
 
-  	project = Project.new(:pr_id => 1, :name => "yeah")
-		project.save
-
-  	logger.level = Logger::DEBUG
-		logger.debug "VALIDATE Form data: #{@name} #{@pass}."
-		logger.info "VALIDATE: Before DB search"
-
-  	project = Project.all()
-
-  	logger.debug "VALIDATE Tried to get a project."
-		logger.info "VALIDATE: Mongo Document query"
-
-  	project.each do |p|
-
-			logger.debug "VALIDATE Tried iterating through results set. #{p.name.to_s}"
-		logger.info "VALIDATE: Document loop"
-
-		end
-
-		logger.debug "VALIDATE After loop"
-
     $employee = Employee.where(:username => username, :password => password ).first
-
-    logger.debug "VALIDATE Tried to get employee"
 
     return $employee.nil?
   end
@@ -258,10 +235,6 @@ end
 post '/login' do
 @name = "#{@params[:name]}"
 @pass = "#{@params[:pass]}"
-
-logger.level = Logger::DEBUG
-logger.debug "POST Form data: #{@name} #{@pass}."
-logger.info "login."
 
 if(!validate(@name, @pass))
 		session["logged_in"] = true
